@@ -1,10 +1,14 @@
 class UsersController < ApplicationController
+  # skip_before_action :verify_authenticity_token
+
   def index
 
   end
 
   def create
-
+    # byebug
+    user = User.create(name: params[:name], password: params[:password])
+    render json: user
   end
 
   def show
@@ -18,6 +22,11 @@ class UsersController < ApplicationController
   end
 
   def update
-    
+    user = User.find(params[:id])
+    user.update(profile: params[:profilePic])
+    profile_url = rails_blob_path(user.profile)
+    # render json: {user: user, profile_url: profile_url}
+    render json: user, methods: :profile_url, except: :password_digest
   end
+
 end
