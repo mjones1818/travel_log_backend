@@ -21,6 +21,7 @@ class UsersController < ApplicationController
   end
 
   def update
+    # byebug
     user = User.find(params[:id])
     user.update(profile: params[:profilePic])
     profile_url = rails_blob_path(user.profile)
