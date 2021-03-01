@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   post '/login', to: 'users#show'
   post '/users', to: 'users#create'
   post 'rails/active_storage/direct_uploads', to: 'direct_uploads#create'
+  get '/users/:id/trips', to: 'users#trips'
 end

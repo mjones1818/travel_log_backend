@@ -11,7 +11,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    # byebug
     user = User.find_by(name: params[:name])
     if user && user.authenticate(params[:password])
       render json: user, methods: :profile_url, except: :password_digest
@@ -21,12 +20,17 @@ class UsersController < ApplicationController
   end
 
   def update
-    # byebug
     user = User.find(params[:id])
     user.update(profile: params[:profilePic])
     profile_url = rails_blob_path(user.profile)
     # render json: {user: user, profile_url: profile_url}
     render json: user, methods: :profile_url, except: :password_digest
+  end
+
+  def trips
+    user = User.find_by(id: params[:id])
+    trips = user.trips
+    render json: trips, methods: :image_urls
   end
 
 end
