@@ -1,5 +1,7 @@
 User.destroy_all
 Trip.destroy_all
+ActiveStorage::Attachment.all.each { |attachment| attachment.purge }
+ActiveStorage::Blob.all.each {|blob| blob.purge}
 
 mike = User.create(name:'Mike', password:'test')
 trip = Trip.create(country:'Thailand')
