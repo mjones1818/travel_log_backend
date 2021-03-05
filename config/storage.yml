@@ -6,6 +6,12 @@ local:
   service: Disk
   root: <%= Rails.root.join("storage") %>
 
+# google_dev:
+#   service: GCS
+#   project: my-project-1580516934415
+#   credentials: <%= Rails.application.credentials.gcskey.as_json %>
+#   bucket: travel-log
+
 # Use rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
 # amazon:
 #   service: S3
