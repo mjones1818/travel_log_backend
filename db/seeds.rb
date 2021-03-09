@@ -4,7 +4,7 @@ ActiveStorage::Attachment.all.each { |attachment| attachment.purge }
 ActiveStorage::Blob.all.each {|blob| blob.purge}
 
 mike = User.create(name:'Mike', password:'test')
-trip = Trip.create(country:'Thailand')
+trip = Trip.create(country:'Thailand', text:'Went here in 2017')
 mike.trips << trip
 trip.images.attach(
   io: File.open('./public/pics/thailand.jpeg'),

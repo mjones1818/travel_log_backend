@@ -15,6 +15,7 @@ class TripsController < ApplicationController
   end
 
   def update
+    
     trip = Trip.find_by(id: params[:id])
     trip.images.attach(params[:images])
     trip.save

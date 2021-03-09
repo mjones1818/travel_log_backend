@@ -3,6 +3,8 @@ class UsersController < ApplicationController
 
   def index
 
+    users = User.all
+    render json: users, methods: :profile_url, except: :password_digest
   end
 
   def create
